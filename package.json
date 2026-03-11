@@ -1,0 +1,26 @@
+{
+  "name": "climfy-server",
+  "version": "1.0.0",
+  "description": "Climfy backend — Hono + TypeScript + Supabase",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch --env-file=.env src/index.ts",
+    "start": "tsx src/index.ts",
+    "lint": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
+    "@hono/node-server": "^1.19.11",
+    "@supabase/supabase-js": "^2.99.1",
+    "hono": "^4.12.7",
+    "tsx": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.4.0",
+    "typescript": "^5.9.3"
+  }
+}
