@@ -1,5 +1,3 @@
--- Run this in Supabase Studio → SQL Editor
-
 -- 1. User preferences
 CREATE TABLE IF NOT EXISTS user_preferences (
   user_id          UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,

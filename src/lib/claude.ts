@@ -73,6 +73,7 @@ Requirements:
 - Tailor the advice specifically to a ${activityLabel} lifestyle — mention concrete activity-relevant tips
 - Reference the local context of ${country || cityName} and the current ${season} season
 - Cover clothing/gear and any activity or health tips relevant to conditions
+- Do NOT use markdown — no headings, no bullet points, no bold or italic text. Plain text only.
 
 Respond in ${langName} only.`
 
@@ -88,5 +89,9 @@ Respond in ${langName} only.`
     throw new Error('Unexpected response type from Claude')
   }
 
-  return block.text.trim()
+  const text = block.text.trim()
+  if (!text) {
+    throw new Error('Claude returned empty response text')
+  }
+  return text
 }

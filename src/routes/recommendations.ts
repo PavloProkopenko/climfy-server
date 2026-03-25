@@ -88,6 +88,8 @@ recommendations.get('/', optionalAuthMiddleware, async (c) => {
     .eq('user_id', user.id)
     .eq('language', lang)
     .gt('expires_at', now.toISOString())
+    .not('content', 'is', null)
+    .neq('content', '')
     .order('generated_at', { ascending: false })
     .limit(1)
     .single()
@@ -126,8 +128,8 @@ recommendations.get('/', optionalAuthMiddleware, async (c) => {
     isAI = false
   }
 
-  // Persist to cache
-  await db.from('recommendations').insert({
+  // Persist to cache (only if content is non-empty)
+  if (content) await db.from('recommendations').insert({
     user_id: user.id,
     lat,
     lon,
